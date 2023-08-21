@@ -10,7 +10,7 @@ export const tagTheme = defineMultiStyleConfig({
         container: {
             py: "1",
             px: "2",
-            bg: "gray.200",
+            bg: "gray.300",
             color: "gray.700",
             _hover: {
                 bg: "blue.400",

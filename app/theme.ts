@@ -2,6 +2,7 @@
 import { extendTheme, type ThemeConfig } from "@chakra-ui/react"
 import { cardTheme } from "./components/custom_themes/cardTheme"
 import { tagTheme } from "./components/custom_themes/tagtheme"
+import { spinnerTheme } from "./components/custom_themes/spinnerTheme"
 
 const config : ThemeConfig = {
   initialColorMode: "dark",
@@ -13,7 +14,7 @@ const theme = extendTheme({
         colors: {
             border: { _light: 'blue.500', _dark: 'blue.200' },
             input: { _light: "cyan.500", _dark: "green.500" },
-            "chakra-body-bg": { _light: "gray.50", _dark: "gray.900" },
+            "chakra-body-bg": { _light: "gray.200", _dark: "gray.900" },
         }
     }, 
     global: {
@@ -26,6 +27,8 @@ const theme = extendTheme({
                 flexDirection: "column",
                 justifyContent:"center",
                 alignItems: "center",
+                padding: '10px',
+                paddingBottom: "20px"
             },
             "h1": {
                 fontWeight: "bold"
@@ -34,7 +37,8 @@ const theme = extendTheme({
     },
     components: {
         Card: cardTheme,
-        Tag: tagTheme
+        Tag: tagTheme,
+        Spinner: spinnerTheme
     },
     config,
     colors: {
