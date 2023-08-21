@@ -15,8 +15,8 @@ export const dynamic = "force-dynamic";
 // import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr";
 
 const query = gql`
-  query GetRecipes($limit: Int!, $skip: Int!) {
-    recipe2Collection(preview: true, limit: $limit, skip: $skip) {
+  query GetRecipes($limit: Int!, $skip: Int!, $keyword: String) {
+    recipe2Collection(preview: true, limit: $limit, skip: $skip, where: { title_contains: $keyword}) {
       total,
       items {
         title,
@@ -51,10 +51,18 @@ const HomeContainer: React.FC = () => {
   // const data = await getClient().query({ query });
   // const { data: { recipe2Collection } } : RecipeData = useSuspenseQuery(query);
 
+  const [searchValue, setSearchValue] = useState('');
+
+  const handleSearch = (value: string) => {
+    // setSearchValue(value);
+    console.log("handleSearch: throttle", value)
+  };
+
   const { loading, error, data, previousData, fetchMore } = useQuery(query, {
     variables: { 
       limit: 1, 
       skip: 0,
+      keyword: ""
     },
     notifyOnNetworkStatusChange:true
   });
@@ -90,7 +98,7 @@ const HomeContainer: React.FC = () => {
   return (
     <Stack spacing={3} width={["90%", "80%","70%","60%","50%"]} pb={30}>
         
-        <SearchBar />  
+        <SearchBar onSearch={handleSearch} />  
         {
           loading && !previousData ?
             <Box 
