@@ -10,13 +10,10 @@ import {
 
 const ColorModeToggle = () => {
 
-    const { colorMode, toggleColorMode } = useColorMode()
-
-    const bgColor = useColorModeValue("blue.700", "white")    
-    const textColor = useColorModeValue("white", "blue.900")    
+    const { colorMode, toggleColorMode } = useColorMode()  
     
     return (
-        <Button onClick={toggleColorMode} p="2" borderRadius={50} bg={bgColor} textColor={textColor}>
+        <Button variant="custom" onClick={toggleColorMode} p="2" borderRadius={50}>
             {colorMode === 'light' ? <MoonIcon/> : <SunIcon/> }
         </Button>
     )

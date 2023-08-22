@@ -3,6 +3,7 @@ import { extendTheme, type ThemeConfig } from "@chakra-ui/react"
 import { cardTheme } from "./components/custom_themes/cardTheme"
 import { tagTheme } from "./components/custom_themes/tagtheme"
 import { spinnerTheme } from "./components/custom_themes/spinnerTheme"
+import { buttonTheme } from "./components/custom_themes/buttonTheme"
 
 const config : ThemeConfig = {
   initialColorMode: "dark",
@@ -38,7 +39,8 @@ const theme = extendTheme({
     components: {
         Card: cardTheme,
         Tag: tagTheme,
-        Spinner: spinnerTheme
+        Spinner: spinnerTheme,
+        Button: buttonTheme
     },
     config,
     colors: {

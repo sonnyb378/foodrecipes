@@ -52,6 +52,7 @@ const CardRecipe: React.FC<RecipeProps> = ({ recipe }) => {
                             fill
                             priority
                             style={{ objectFit: "cover" }}
+                            sizes="(max-width: 768px) 100vw, 250px"
                         />
                     </Box>
                     

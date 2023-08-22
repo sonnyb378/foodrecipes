@@ -55,6 +55,7 @@ const HomeContainer: React.FC = () => {
 
   const handleSearch = (value: string) => {
     // setSearchValue(value);
+    if (!value) return;
     console.log("handleSearch: throttle", value)
   };
 
