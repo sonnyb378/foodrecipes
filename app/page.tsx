@@ -47,10 +47,11 @@ export default function Home() {
 
 
   return (
-    <main className="main">
+    <>
       {/* <HomeContainer data={data} /> */}
       {/* <SearchBar /> */}
       <HomeContainer />
-    </main>
+    </>
+    
   )
 }

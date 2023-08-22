@@ -1,9 +1,7 @@
-
+import RecipeDetails from "@/components/Recipe/RecipeDetails";
 
 export default function DetailPage({ params }: { params: { slug: string } }) {
   return (
-    <div>
-      <div>details page: { params.slug}</div>
-    </div>
+    <RecipeDetails slug={ params.slug } />
   )
 }

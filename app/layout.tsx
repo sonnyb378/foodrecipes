@@ -23,12 +23,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <main className="main">
         <ApolloWrapper>
           <Providers>
             <Header />
             {children}
           </Providers>
           </ApolloWrapper>
+        </main>
       </body>
     </html>
   )

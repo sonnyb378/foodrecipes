@@ -8,6 +8,7 @@ import { Card, CardHeader, CardBody, HStack, Heading, VStack, useColorMode, Avat
 import { StarIcon } from "@chakra-ui/icons"
 
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 
 interface RecipeProps {
     recipe: Recipe;
@@ -15,6 +16,7 @@ interface RecipeProps {
 
 const CardRecipe: React.FC<RecipeProps> = ({ recipe }) => {
     
+    const router = useRouter();
     const { colorMode } = useColorMode();
 
     const averageRating =
@@ -33,16 +35,17 @@ const CardRecipe: React.FC<RecipeProps> = ({ recipe }) => {
 
     const descriptionText = recipe.description.json.content
         .filter(contentNode => contentNode.nodeType === 'paragraph')
-        .map(paragraphNode =>
-        paragraphNode.content.map(textNode => textNode.value).join('')
-        )
+        .map(paragraphNode => paragraphNode.content.map(textNode => textNode.value).join(''))
         .join(' ');
 
     const thumbnail = recipe.imagesCollection.items[0]?.url;
-
     
+    const clickHandler = (slug: string) => {
+        router.push(`/details/${slug}`);
+    }
+
     return (
-        <Card variant={colorMode}>
+        <Card variant={colorMode} onClick={ clickHandler.bind(null, recipe.slug) }>
             <CardBody>
                 <Stack direction={['column','row']} alignItems="flex-start" >
                     <Box position={"relative"} overflow="hidden" width={["100%","250px"]} height={150}>

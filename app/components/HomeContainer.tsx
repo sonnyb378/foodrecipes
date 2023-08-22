@@ -130,7 +130,7 @@ const HomeContainer: React.FC = () => {
             colorScheme="blue"
             variant="solid"
             fontSize={12}
-            onClick={handleLoadMore}
+            onClick={ handleLoadMore }
           >
             Load More
           </Button>

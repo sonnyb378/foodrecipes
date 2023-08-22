@@ -9,7 +9,7 @@ export default function Header() {
     
 
     return (
-        <Flex py={8} px={5} align="center" justify="end">
+        <Flex py={8} px={5} width="100%" align="center" justify="end">
             <header>
                 <ColorModeToggle />
             </header>
