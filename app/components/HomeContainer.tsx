@@ -54,16 +54,14 @@ const HomeContainer: React.FC = () => {
   const [searchValue, setSearchValue] = useState('');
 
   const handleSearch = (value: string) => {
-    // setSearchValue(value);
-    if (!value) return;
-    console.log("handleSearch: throttle", value)
+    setSearchValue(value);
   };
 
   const { loading, error, data, previousData, fetchMore } = useQuery(query, {
     variables: { 
       limit: 1, 
       skip: 0,
-      keyword: ""
+      keyword: `${searchValue}`
     },
     notifyOnNetworkStatusChange:true
   });
@@ -75,7 +73,8 @@ const HomeContainer: React.FC = () => {
   const handleLoadMore = () => {
     fetchMore({
       variables: { 
-        skip: recipe2Collection.items.length 
+        skip: recipe2Collection.items.length,
+        keyword: `${searchValue}`
       },
       updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult) return prev;
