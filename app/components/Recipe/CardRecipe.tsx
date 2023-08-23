@@ -43,7 +43,8 @@ const CardRecipe: React.FC<RecipeProps> = ({ recipe }) => {
         router.push(`/details/${slug}`);
     }
 
-    const clickTagsHandler = (tag: string) => {
+    const clickTagsHandler = (tag: string, event: React.MouseEvent) => {
+        event.stopPropagation();
         router.push(`/tags/${tag}`);
     }
 
