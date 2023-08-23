@@ -40,14 +40,20 @@ const CardRecipe: React.FC<RecipeProps> = ({ recipe }) => {
 
     const thumbnail = recipe.imagesCollection.items[0]?.url;
     
-    const clickHandler = (slug: string) => {
+    const t = convertToArray(`${recipe.tags}`)
+
+    const clickDetailHandler = (slug: string) => {
         router.push(`/details/${slug}`);
     }
 
-   const t = convertToArray(`${recipe.tags}`)
+    const clickTagsHandler = (tag: string) => {
+        router.push(`/tags/${tag}`);
+    }
+
+   
 
     return (
-        <Card variant="custom" onClick={ clickHandler.bind(null, recipe.slug) }>
+        <Card variant="custom" onClick={ clickDetailHandler.bind(null, recipe.slug) }>
             <CardBody>
                 <Stack direction={['column','row']} alignItems="flex-start" >
                     <Box position={"relative"} overflow="hidden" width={["100%","250px"]} height={150}>
@@ -90,7 +96,7 @@ const CardRecipe: React.FC<RecipeProps> = ({ recipe }) => {
                             <Flex flexWrap="wrap" gap={1}>
                                 {
                                     t.map((tag, index) => (
-                                    <Tag key={index} variant="custom" size='sm'>
+                                    <Tag key={index} variant="custom" size='sm' onClick={ clickTagsHandler.bind(null, tag.trim().toLowerCase()) }>
                                         {tag.trim()}
                                     </Tag>))
                                 }    

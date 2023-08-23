@@ -30,6 +30,10 @@ export default function RecipeDetails( { data }: { data: Recipe} ) {
         router.push(`/`);
     }
 
+    const clickTagsHandler = (tag: string) => {
+        router.push(`/tags/${tag}`);
+    }
+
   return (
     
     <Stack spacing={3} width={["95%","90%","80%","70%","50%"]} pb={30} direction={["column"]} borderWidth={0} borderColor={"white"}>
@@ -65,7 +69,7 @@ export default function RecipeDetails( { data }: { data: Recipe} ) {
                         <Flex flexWrap="wrap" gap={1}>
                         {
                             t.map((tag, index) => (
-                            <Tag key={index} variant="custom" size='sm'>
+                            <Tag key={index} variant="custom" size='sm' onClick={ clickTagsHandler.bind(null, tag.trim().toLowerCase()) }>
                                 {tag.trim()}
                             </Tag>))
                         }
