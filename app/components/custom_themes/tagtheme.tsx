@@ -22,8 +22,8 @@ const { definePartsStyle, defineMultiStyleConfig } = createMultiStyleConfigHelpe
         bg: "gray.500",
         color: "gray.100",
         _hover: {
-            bg: "cyan.200",
-            color: "gray.500"
+            bg: "gray.400",
+            color: "gray.800"
         }
       }
     }

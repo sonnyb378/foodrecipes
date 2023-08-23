@@ -17,7 +17,6 @@ interface RecipeProps {
 const CardRecipe: React.FC<RecipeProps> = ({ recipe }) => {
     
     const router = useRouter();
-    const { colorMode } = useColorMode();
 
     const averageRating =
       (recipe.ratings.one_star +
@@ -45,7 +44,7 @@ const CardRecipe: React.FC<RecipeProps> = ({ recipe }) => {
     }
 
     return (
-        <Card variant={colorMode} onClick={ clickHandler.bind(null, recipe.slug) }>
+        <Card variant="custom" onClick={ clickHandler.bind(null, recipe.slug) }>
             <CardBody>
                 <Stack direction={['column','row']} alignItems="flex-start" >
                     <Box position={"relative"} overflow="hidden" width={["100%","250px"]} height={150}>
@@ -86,7 +85,7 @@ const CardRecipe: React.FC<RecipeProps> = ({ recipe }) => {
                         </Text>
                         <HStack alignItems="center" justifyItems="start" pt="2">
                             {recipe.tags.map((tag, index) => (
-                              <Tag key={index} variant={colorMode} size='sm'>
+                              <Tag key={index} variant="custom" size='sm'>
                                 {tag}
                               </Tag>
                             ))}
