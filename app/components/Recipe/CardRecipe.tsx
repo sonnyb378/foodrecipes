@@ -1,10 +1,7 @@
 "use client"
 
 import React from "react"
-import { Card, CardHeader, CardBody, HStack, Heading, VStack, useColorMode, Avatar, Text,
-    Tag, 
-    Stack, Box, Flex, SimpleGrid
-} from '@chakra-ui/react'
+import { Card, CardHeader, CardBody, HStack, Heading, VStack, Avatar, Text, Tag, Stack, Box, Flex } from '@chakra-ui/react'
 import { StarIcon } from "@chakra-ui/icons"
 
 import Image from "next/image"

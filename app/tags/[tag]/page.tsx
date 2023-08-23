@@ -2,7 +2,6 @@
 
 import LoadingSpinner from "@/components/LoadingSpinner";
 import RecipeList from "@/components/Recipe/RecipeList";
-import { getClient } from "@/util/apolloClient";
 import { gql, useQuery } from "@apollo/client"
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import { Box, Button, HStack, Heading, Stack, Text } from "@chakra-ui/react";
@@ -41,8 +40,6 @@ const query = gql`
   }
 `
 export default function RecipesByTags({ params }: { params: { tag: string } }) {
-
-  // const { loading, error, data } = await getClient().query({ query, variables: { tag: params.tag } });
 
   const router = useRouter();
 

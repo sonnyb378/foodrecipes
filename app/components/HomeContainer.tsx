@@ -5,14 +5,11 @@ import React, { Suspense, useEffect, useState } from 'react';
 import SearchBar from './SearchBar';
 import RecipeList from './Recipe/RecipeList';
 
-// import { getClient } from "../util/apolloClient"
 import { useQuery } from '@apollo/client';
 import { gql } from '@apollo/client';
 import LoadingSpinner from './LoadingSpinner';
 
 export const dynamic = "force-dynamic";
-
-// import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr";
 
 const query = gql`
   query GetRecipes($limit: Int!, $skip: Int!, $keyword: String) {
@@ -48,8 +45,6 @@ const query = gql`
 `;
 
 const HomeContainer: React.FC = () => {
-  // const data = await getClient().query({ query });
-  // const { data: { recipe2Collection } } : RecipeData = useSuspenseQuery(query);
 
   const [searchValue, setSearchValue] = useState('');
 

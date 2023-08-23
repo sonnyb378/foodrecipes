@@ -1,6 +1,5 @@
 import { defineStyle, defineStyleConfig } from '@chakra-ui/react'
 
-
 const dark = defineStyle({
     color: "gray.200",
     size: "lg"
