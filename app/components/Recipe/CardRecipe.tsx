@@ -3,16 +3,17 @@
 import React from "react"
 import { Card, CardHeader, CardBody, HStack, Heading, VStack, useColorMode, Avatar, Text,
     Tag, 
-    Stack, Box
+    Stack, Box, Flex, SimpleGrid
 } from '@chakra-ui/react'
 import { StarIcon } from "@chakra-ui/icons"
 
 import Image from "next/image"
 import { useRouter } from "next/navigation"
+import { convertToArray } from "@/util/convertTag"
 
 interface RecipeProps {
     recipe: Recipe;
-  }
+}
 
 const CardRecipe: React.FC<RecipeProps> = ({ recipe }) => {
     
@@ -42,6 +43,8 @@ const CardRecipe: React.FC<RecipeProps> = ({ recipe }) => {
     const clickHandler = (slug: string) => {
         router.push(`/details/${slug}`);
     }
+
+   const t = convertToArray(`${recipe.tags}`)
 
     return (
         <Card variant="custom" onClick={ clickHandler.bind(null, recipe.slug) }>
@@ -84,11 +87,14 @@ const CardRecipe: React.FC<RecipeProps> = ({ recipe }) => {
                             {descriptionText}
                         </Text>
                         <HStack alignItems="center" justifyItems="start" pt="2">
-                            {recipe.tags.map((tag, index) => (
-                              <Tag key={index} variant="custom" size='sm'>
-                                {tag}
-                              </Tag>
-                            ))}
+                            <Flex flexWrap="wrap" gap={1}>
+                                {
+                                    t.map((tag, index) => (
+                                    <Tag key={index} variant="custom" size='sm'>
+                                        {tag.trim()}
+                                    </Tag>))
+                                }    
+                            </Flex>                                                  
                         </HStack>
                     </VStack>
                 </Stack>

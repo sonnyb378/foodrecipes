@@ -1,7 +1,8 @@
 'use client'
 
+import { convertToArray } from "@/util/convertTag";
 import { ArrowBackIcon } from "@chakra-ui/icons";
-import { Avatar, Box, Button, HStack, Heading, ListItem, OrderedList, Stack, Tag, Text, VStack } from "@chakra-ui/react";
+import { Avatar, Box, Button, Flex, HStack, Heading, ListItem, OrderedList, Stack, Tag, Text, VStack } from "@chakra-ui/react";
 
 import Image from "next/image"
 import { useRouter } from "next/navigation";
@@ -23,6 +24,7 @@ export default function RecipeDetails( { data }: { data: Recipe} ) {
 
 
     const thumbnail = data.imagesCollection.items[0]?.url;
+    const t = convertToArray(`${data.tags}`)
 
     const clickHandler = () => {
         router.push(`/`);
@@ -60,11 +62,14 @@ export default function RecipeDetails( { data }: { data: Recipe} ) {
                     </HStack>
                     <Text fontSize={"sm"}>{ descriptionText}</Text>  
                     <HStack alignItems="center" justifyItems="start" pt="2">
-                        {data.tags.map((tag, index) => (
-                            <Tag key={index} size='sm' variant={"custom"}>
-                                {tag}
-                            </Tag>
-                        ))}
+                        <Flex flexWrap="wrap" gap={1}>
+                        {
+                            t.map((tag, index) => (
+                            <Tag key={index} variant="custom" size='sm'>
+                                {tag.trim()}
+                            </Tag>))
+                        }
+                        </Flex>
                     </HStack>    
                     <VStack alignItems="start" justifyItems="start" pt={5}>
                         <Heading as="h1" fontSize={"xl"}>Ingredients</Heading>
