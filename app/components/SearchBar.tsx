@@ -1,7 +1,7 @@
 'use client'
 
 import { SearchIcon } from '@chakra-ui/icons';
-import { HStack, Input, InputGroup, InputRightElement, Stack } from '@chakra-ui/react'
+import { Input, InputGroup, InputRightElement } from '@chakra-ui/react'
 import { useEffect, useState } from 'react';
 import useDebounce from './hooks/useDebounce';
 
